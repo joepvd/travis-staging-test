@@ -1,3 +1,17 @@
+sudo: required
+dist: trusty
+#group: edge
+install: skip
+env: image=bash pg=10
 language: bash
-install: sleep 3
-script: pstree -ap
+addons:
+  postgresql: 9.5
+services:
+- postgresql
+script:
+- psql -c 'select * from version()'
+- |
+    psql -c "select setting from pg_settings where name = 'data_directory';" | awk 'BEGIN{e=1};1;/ramfs/{e=0};END{exit e}'
+notifications:
+  email: never
+
