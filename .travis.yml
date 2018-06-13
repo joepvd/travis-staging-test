@@ -1,14 +1,60 @@
 sudo: required
 dist: xenial
-#group: edge
+group: edge
 install: skip
-language: python
-services:
-- postgresql
+matrix:
+  include:
+  - env: image=__sardonyx__ pg=9.4
+    language: __sardonyx__
+    addons:
+      postgresql: 9.4
+    services:
+    - postgresql
+  - env: image=__sardonyx__ pg=9.5
+    language: __sardonyx__
+    addons:
+      postgresql: 9.5
+    services:
+    - postgresql
+  - env: image=__sardonyx__ pg=9.6
+    language: __sardonyx__
+    addons:
+      postgresql: 9.6
+    services:
+    - postgresql
+  - env: image=__sardonyx__ pg=10
+    language: __sardonyx__
+    addons:
+      postgresql: 10
+    services:
+    - postgresql
+  - env: image=__opal__ pg=9.4
+    language: __opal__
+    addons:
+      postgresql: 9.4
+    services:
+    - postgresql
+  - env: image=__opal__ pg=9.5
+    language: __opal__
+    addons:
+      postgresql: 9.5
+    services:
+    - postgresql
+  - env: image=__opal__ pg=9.6
+    language: __opal__
+    addons:
+      postgresql: 9.6
+    services:
+    - postgresql
+  - env: image=__opal__ pg=10
+    language: __opal__
+    addons:
+      postgresql: 10
+    services:
+    - postgresql
 script:
-- psql -c 'select * from version()'
+- psql -c 'select * from version()' | grep -F $pg
 - |
     psql -c "select setting from pg_settings where name = 'data_directory';" | awk 'BEGIN{e=1};1;/ramfs/{e=0};END{exit e}'
 notifications:
   email: never
-
