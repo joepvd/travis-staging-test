@@ -1,57 +1,58 @@
-sudo: required
-dist: xenial
-group: edge
 install: skip
 matrix:
   include:
-  - env: image=__sardonyx__ pg=9.4
-    language: __sardonyx__
+  - env: image=php_xenial pg=9.4
+    language: php
     addons:
       postgresql: 9.4
     services:
     - postgresql
-  - env: image=__sardonyx__ pg=9.5
-    language: __sardonyx__
+    sudo: required
+    dist: xenial
+    group: edge
+  - env: image=php_xenial pg=9.5
+    language: php
     addons:
       postgresql: 9.5
     services:
     - postgresql
-  - env: image=__sardonyx__ pg=9.6
-    language: __sardonyx__
+    sudo: required
+    dist: xenial
+    group: edge
+  - env: image=php_xenial pg=9.6
+    language: php
     addons:
       postgresql: 9.6
     services:
     - postgresql
-  - env: image=__sardonyx__ pg=10
-    language: __sardonyx__
+    sudo: required
+    dist: xenial
+    group: edge
+  - env: image=php_xenial pg=10
+    language: php
     addons:
       postgresql: 10
     services:
     - postgresql
-  - env: image=__opal__ pg=9.4
-    language: __opal__
+    sudo: required
+    dist: xenial
+    group: edge
+  - env: image=php_trusty pg=9.2
+    language: php
     addons:
-      postgresql: 9.4
+      postgresql: 9.2
     services:
     - postgresql
-  - env: image=__opal__ pg=9.5
-    language: __opal__
-    addons:
-      postgresql: 9.5
-    services:
-    - postgresql
-  - env: image=__opal__ pg=9.6
-    language: __opal__
+    sudo: required
+    dist: trusty
+  - env: image=php_trusty pg=9.6
+    language: php
     addons:
       postgresql: 9.6
     services:
     - postgresql
-  - env: image=__opal__ pg=10
-    language: __opal__
-    addons:
-      postgresql: 10
-    services:
-    - postgresql
+    sudo: required
+    dist: trusty
 script:
 - psql -c 'select * from version()' | grep -F $pg
 - |
