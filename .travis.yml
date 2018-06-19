@@ -54,10 +54,6 @@ matrix:
     sudo: required
     dist: trusty
 script:
-- travis_is_linux
-- travis_is_xenial
-- travis_is_trusty
-- travis_has_systemd
 - psql -c 'select * from version()' | grep -F $pg
 - |
     psql -c "select setting from pg_settings where name = 'data_directory';" | awk 'BEGIN{e=1};1;/ramfs/{e=0};END{exit e}'
