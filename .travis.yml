@@ -1,61 +1,7 @@
+dist: precise
+sudo: required
+language: ruby
 install: skip
-matrix:
-  include:
-  - env: image=python_xenial pg=9.4
-    language: python
-    addons:
-      postgresql: 9.4
-    services:
-    - postgresql
-    sudo: required
-    dist: xenial
-    group: edge
-  - env: image=python_xenial pg=9.5
-    language: python
-    addons:
-      postgresql: 9.5
-    services:
-    - postgresql
-    sudo: required
-    dist: xenial
-    group: edge
-  - env: image=python_xenial pg=9.6
-    language: python
-    addons:
-      postgresql: 9.6
-    services:
-    - postgresql
-    sudo: required
-    dist: xenial
-    group: edge
-  - env: image=python_xenial pg=10
-    language: python
-    addons:
-      postgresql: 10
-    services:
-    - postgresql
-    sudo: required
-    dist: xenial
-    group: edge
-  - env: image=python_trusty pg=9.2
-    language: python
-    addons:
-      postgresql: 9.2
-    services:
-    - postgresql
-    sudo: required
-    dist: trusty
-  - env: image=python_trusty pg=9.6
-    language: python
-    addons:
-      postgresql: 9.6
-    services:
-    - postgresql
-    sudo: required
-    dist: trusty
-script:
-- psql -c 'select * from version()' | grep -F $pg
-- |
-    psql -c "select setting from pg_settings where name = 'data_directory';" | awk 'BEGIN{e=1};1;/ramfs/{e=0};END{exit e}'
+script: curl -Iv https://api.rubygems.org/specs.4.8.gz
 notifications:
   email: never
