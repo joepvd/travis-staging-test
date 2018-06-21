@@ -11,6 +11,9 @@ matrix:
     script:
     - psql -c "select * from version()"
     - 'psql -c "select * from version()" | grep -F 9.6'
+    after_failure:
+    - "systemctl status postgresql@9.6-main.service"
+    - "journalctl -xe" 
   - env: name='postgres service + addon xenial'
     services:
     - postgresql
@@ -19,6 +22,9 @@ matrix:
     script:
     - psql -c "select * from version()"
     - 'psql -c "select * from version()" | grep -F 10'
+    after_failure:
+    - "systemctl status postgresql@9.6-main.service"
+    - "journalctl -xe" 
   - env: name='postgres service trusty'
     dist: trusty
     group: stable
