@@ -1,57 +1,35 @@
+language: python
 dist: xenial
-sudo: required
 group: edge
-language: java
+sudo: required
 install: skip
 matrix:
   include:
-  - env: name='postgres service xenial'
-    services:
-    - postgresql
+  - env: test=riak
+    services: riak
+    script: riak version
+  - env: test=mysql
+    services: mysql
     script:
-    - psql -c "select * from version()"
-    - 'psql -c "select * from version()" | grep -F 9.6'
-    after_failure:
-    - "systemctl status postgresql@9.6-main.service"
-    - "sudo journalctl -xe" 
-  - env: name='postgres service + addon xenial'
-    services:
-    - postgresql
-    addons:
-      postgresql: 10
+    - "ps aux | grep '[m]ysql' || true"
+    - mysql -uroot -e 'SHOW VARIABLES LIKE "%version%";'
+    - mysql -utravis -e 'SHOW VARIABLES LIKE "%version%";'
+    - mysql -uroot -e 'select * from mysql.user;'
+  - env: test=neo4j
+    services: neo4j
+    script: curl http://localhost:7474/db/data/
+  - env: test=elasticsearch
+    services: elasticsearch
+    script: curl http://localhost:9200/_nodes
+  - env: test=cassandra
+    services: cassandra
     script:
-    - psql -c "select * from version()"
-    - 'psql -c "select * from version()" | grep -F 10'
-    after_failure:
-    - "systemctl status postgresql@9.6-main.service"
-    - "sudo journalctl -xe" 
-  - env: name='postgres service trusty'
-    dist: trusty
-    group: stable
-    services:
-    - postgresql
+    - "cqlsh <<<'show version;'"
+    - "cqlsh <<<'select * from system.local;'"
+  - env: test=mongodb
+    services: mongodb
     script:
-    - psql -c "select * from version()"
-    - 'psql -c "select * from version()" | grep -F 9.2'
-  - env: name='postgres addon trusty'
-    dist: trusty
-    group: stable
-    addons:
-      postgresql: 9.5
-    services:
-    - postgresql
-    script:
-    - psql -c "select * from version()"
-    - 'psql -c "select * from version()" | grep -F 9.5'
-  - env: name='postgres addon precise'
-    dist: precise
-    group: stable
-    addons:
-      postgresql: 9.2
-    services:
-    - postgresql
-    script:
-    - psql -c "select * from version()"
-    - 'psql -c "select * from version()" | grep -F 9.2'
+    - mongo --eval 'db.version()'
 notifications:
   email: never
+
