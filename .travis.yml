@@ -1,7 +1,5 @@
-os:
-- osx
 language: scala
-sudo: true
+sudo: false
 dist: trusty
 addons:
   apt:
@@ -15,11 +13,5 @@ scala:
 - 2.12.6
 jdk:
 - oraclejdk8
-env:
-  - CI_CATEGORY=UNIT_TESTS
-before_install:
-  - ./.ci_scripts/beforeInstall.sh $CI_CATEGORY $MONGO_VER $MONGO_PROFILE /tmp/integration-env.sh
-  - if [ "x$CI_CATEGORY" = "xINTEGRATION_TESTS" ]; then (./.ci_scripts/fork-mongod.sh /tmp/integration-env.sh); fi
-script:
-  - export SCALA_VERSION="$TRAVIS_SCALA_VERSION"
-  - ./.ci_scripts/retry.sh 3 ./.ci_scripts/validate.sh /tmp/integration-env.sh
+install: skip
+script: echo yeah
