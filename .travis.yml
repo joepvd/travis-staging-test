@@ -1,7 +1,5 @@
-os:
-- osx
 language: scala
-sudo: true
+sudo: false
 dist: trusty
 addons:
   apt:
