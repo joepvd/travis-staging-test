@@ -1,7 +1,5 @@
-os:
-- osx
 language: scala
-sudo: true
+sudo: false
 dist: trusty
 addons:
   apt:
@@ -17,3 +15,5 @@ jdk:
 - oraclejdk8
 install: skip
 script: echo yeah
+notifications:
+  email: never
