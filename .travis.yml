@@ -9,7 +9,7 @@ matrix:
     elm_test_version: "0.18.0"
 sudo: false
 dist: trusty
-install: skip
+install: 'npm install -g elm-use@">=1.1.1 <2.0.0"'
 script: echo yeah
 notifications:
   email: never
