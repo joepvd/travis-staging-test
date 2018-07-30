@@ -1,18 +1,6 @@
-language: scala
+language: elm
 sudo: false
 dist: trusty
-addons:
-  apt:
-    update: true
-    packages:
-    - numactl
-    - libnuma1
-    - libnuma-dev
-    - libnuma-dbg
-scala: 
-- 2.12.6
-jdk:
-- oraclejdk8
 install: skip
 script: echo yeah
 notifications:
