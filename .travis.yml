@@ -1,10 +1,10 @@
 language: elm
-jobs:
+matrix:
   include:
-  - env: test="no elm*version"
-  - env: test="elm_version: 0.17.0"
+  - env: "test=no elm*version"
+  - env: "test=elm_version: 0.17.0"
     elm_version: "0.17.0"
-  - env: test="elm_version: 0.17.0; elm_test_version: 0.17.0"
+  - env: "test=elm_version: 0.17.0; elm_test_version: 0.17.0"
     elm_version: "0.18.0"
     elm_test_version: "0.18.0"
 sudo: false
