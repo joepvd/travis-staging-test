@@ -1,15 +1,12 @@
-language: node_js
-matrix:
-  include:
-  - env: "test=no elm*version"
-  - env: "test=elm_version: 0.17.0"
-    elm_version: "0.17.0"
-  - env: "test=elm_version: 0.17.0; elm_test_version: 0.17.0"
-    elm_version: "0.18.0"
-    elm_test_version: "0.18.0"
 sudo: false
 dist: trusty
-install: 'npm install -g "elm-use@>=1.1.1 <2.0.0"'
+language: nix
+nix_version:
+    - 1.2.3
+    - 0.9.8
+    - 
+install: skip
 script: echo yeah
 notifications:
   email: never
+
