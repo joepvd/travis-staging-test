@@ -1,7 +1,7 @@
 sudo: false
 dist: trusty
 language: nix
-nix_version:
+nix:
     - 1.2.3
     - 0.9.8
     - 
