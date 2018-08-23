@@ -11,7 +11,7 @@ jdk:
     - oraclejdk8
     - oraclejdk9
     - oraclejdk10
-install: skip
+install: "ls -la /usr/lib/jvm /usr/local/lib/jvm || true"
 script:
     - which java
     - ls -l `which java`
