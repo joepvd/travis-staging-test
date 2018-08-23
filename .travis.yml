@@ -1,12 +1,22 @@
 sudo: false
 dist: trusty
-language: nix
-nix:
-    - 1.2.3
-    - 0.9.8
-    - 
+language: java
+jdk:
+    - openjdk7
+    - openjdk8
+    - openjdk9
+    - openjdk10
+
+    - oraclejdk7
+    - oraclejdk8
+    - oraclejdk9
+    - oraclejdk10
 install: skip
-script: echo yeah
+script:
+    - which java
+    - ls -l `which java`
+    - "tr : '\n' <<<$PATH"
+    - echo $JAVA_HOME
 notifications:
   email: never
 
