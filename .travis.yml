@@ -4,16 +4,16 @@ jobs:
     include:
         - env: test='openjdk not on image'
           jdk: openjdk9
-          dist: trusty
+          dist: precise
         - env: test='openjdk on image'
           jdk: openjdk7
-          dist: trusty
+          dist: precise
         - env: test='oraclejdk not on image'
           jdk: oraclejdk11
-          dist: trusty
+          dist: precise
         - env: test='oraclejdk on image'
           jdk: oraclejdk9
-          dist: trusty
+          dist: precise
 install: "ls -la /usr/lib/jvm /usr/local/lib/jvm || true"
 script:
     - which java
