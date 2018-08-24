@@ -1,12 +1,19 @@
-sudo: false
-dist: trusty
+sudo: required
 language: java
-jdk:
-    - openjdk9
-    - openjdk10
-
-    - oraclejdk9
-    - oraclejdk10
+jobs:
+    include:
+        - env: test='openjdk not on image'
+          jdk: openjdk9
+          dist: trusty
+        - env: test='openjdk on image'
+          jdk: openjdk7
+          dist: trusty
+        - env: test='oraclejdk not on image'
+          jdk: oraclejdk11
+          dist: trusty
+        - env: test='oraclejdk on image'
+          jdk: oraclejdk9
+          dist: trusty
 install: "ls -la /usr/lib/jvm /usr/local/lib/jvm || true"
 script:
     - which java
