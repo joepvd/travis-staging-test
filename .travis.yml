@@ -2,17 +2,17 @@ sudo: required
 language: java
 jobs:
     include:
-        - env: test='openjdk not on image'
+        - env: test='precise openjdk not on image'
           jdk: openjdk9
           dist: precise
-        - env: test='openjdk on image'
+        - env: test='precise openjdk on image'
           jdk: openjdk7
           dist: precise
-        - env: test='oraclejdk not on image'
+        - env: test='precise oraclejdk not on image'
           jdk: oraclejdk11
           dist: precise
-        - env: test='oraclejdk on image'
-          jdk: oraclejdk9
+        - env: test='precise oraclejdk on image'
+          jdk: oraclejdk7
           dist: precise
 install: "ls -la /usr/lib/jvm /usr/local/lib/jvm || true"
 script:
