@@ -1,25 +1,22 @@
 sudo: required
 language: java
+addons:
+    apt:
+        - atool
+        - vim
 jobs:
     include:
-        - env: test='precise openjdk not on image'
-          jdk: openjdk9
+        - env: run=trusty-stable
+          dist: trusty
+        - env: run=trusty-old
+          dist: trusty
+          group: deprecated-2017Q2
+        - env: run=precise
           dist: precise
-        - env: test='precise openjdk on image'
-          jdk: openjdk7
-          dist: precise
-        - env: test='precise oraclejdk not on image'
-          jdk: oraclejdk11
-          dist: precise
-        - env: test='precise oraclejdk on image'
-          jdk: oraclejdk7
-          dist: precise
-install: "ls -la /usr/lib/jvm /usr/local/lib/jvm || true"
-script:
-    - which java
-    - ls -l `which java`
-    - "tr : '\n' <<<$PATH"
-    - echo $JAVA_HOME
+        - env: run=xenial
+          dist: xenial
+install: skip
+script: skip
 notifications:
   email: never
 
