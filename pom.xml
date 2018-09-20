@@ -84,17 +84,6 @@
             -->
             <filter>profiles/${build.profile.id}/config.properties</filter>
         </filters>
-        <resources>
-            <!--
-                Placeholders that are found from the files located in the configured resource
-                directories are replaced with the property values found from the profile
-                specific configuration file.
-            -->
-            <resource>
-                <filtering>true</filtering>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
         <plugins>
             <!--
                 The configuration of the Maven Assembly plugin that assembles the
