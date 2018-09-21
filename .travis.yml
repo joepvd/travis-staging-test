@@ -1,6 +1,12 @@
-language: java
-jdk: oraclejdk8
-script: skip
+language: bash
+script: heroku --version
+install: skip
+matrix:
+    include:
+        - env: dist=trusty
+          dist: trusty
+        - env: dist=precise
+          dist: precise
 notifications:
   email: never
 
