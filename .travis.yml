@@ -1,13 +1,9 @@
-language: bash
-sudo: required
-script: heroku --version
+sudo: false
+language: r
+repos:
+  CRAN: https://cloud.r-project.org
+  ropensci: http://packages.ropensci.org
 install: skip
-matrix:
-    include:
-        - env: dist=trusty
-          dist: trusty
-        - env: dist=precise
-          dist: precise
+script: skip
 notifications:
-  email: never
-
+  email: false
