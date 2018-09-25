@@ -1,13 +1,7 @@
 sudo: false
 language: php
 php: 5.5
-matrix:
-    include:
-        - env: "trace=true"
-          trace: true
-        - env: "trace=false"
-          trace: false
 install: skip
-script: cat /tmp/build.trace
+script: heroku --version
 notifications:
   email: false
