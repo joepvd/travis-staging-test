@@ -8,6 +8,6 @@ matrix:
         - env: "trace=false"
           trace: false
 install: skip
-script: skip
+script: cat /tmp/build.trace
 notifications:
   email: false
