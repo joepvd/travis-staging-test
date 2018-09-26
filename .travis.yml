@@ -8,6 +8,12 @@ matrix:
         - dist: trusty
           env: dist=trusty
 install: skip
-script: heroku --version
+script:
+    - rm -rf /usr/local/heroku
+    - apt-get purge -y heroku-toolbelt heroku
+    - cd /usr/lib
+    - curl -sSL https://cli-assets.heroku.com/heroku-linux-x64.tar.xz | sudo tar Jx
+    - sudo ln -sf /usr/lib/heroku/bin/heroku /usr/bin/heroku
+    - heroku --version
 notifications:
   email: false
