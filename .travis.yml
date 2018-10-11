@@ -26,6 +26,38 @@ matrix:
           - which java
           - java -version
           - java -version | grep -q 'openjdk version "8"'
+        - env: test=trusty_openjdk7
+          # openjdk on image
+          dist: trusty
+          jdk: openjdk7
+          script:
+          - which java
+          - java -version
+          - java -version | grep -q 'openjdk version "7"'
+        - env: test=trusty_openjdk11
+          # openjdk not on image
+          dist: trusty
+          jdk: openjdk11
+          script:
+          - which java
+          - java -version
+          - java -version | grep -q 'openjdk version "11"'
+        - env: test=trusty_oraclejdk11
+          # oraclejdk not on image
+          dist: trusty
+          jdk: oraclejdk11
+          script:
+          - which java
+          - java -version
+          - java -version | grep -qE 'Java HotSpot.*build 11\.'
+        - env: test=trusty_oraclejdk8
+          # oraclejdk not on image
+          dist: trusty
+          jdk: oraclejdk8
+          script:
+          - which java
+          - java -version
+          - java -version | grep -qE 'Java HotSpot.*build 8\.'
 install: skip
 notifications:
   email: false
