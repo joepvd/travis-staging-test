@@ -4,23 +4,28 @@ jdk: oraclejdk11
 matrix:
     include:
         - env: test=xenial_oraclejdk10
+          # Oracle not on image
           dist: xenial
           jdk: oraclejdk10
           script:
           - which java
           - java -version
+          - java -version | grep -qE 'Java HotSpot.*build 10\.'
         - env: test=xenial_openjdk11
+          # Openjdk on image
           dist: xenial
           jdk: openjdk11
           script:
           - which java
           - java -version
-        - env: test=xenial_openjdk9
+          - java -version | grep -q 'openjdk version "11"'
+        - env: test=xenial_openjdk8
           dist: xenial
           jdk: openjdk8
           script:
           - which java
           - java -version
+          - java -version | grep -q 'openjdk version "8"'
 install: skip
 notifications:
   email: false
