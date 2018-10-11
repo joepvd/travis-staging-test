@@ -1,14 +1,20 @@
 sudo: prettyplease
-language: php
-php: 5.5
+language: java
+jdk: oraclejdk11
 matrix:
     include:
-        - dist: precise
-          env: dist=precise
-        - dist: trusty
-          env: dist=trusty
+        - env: test=trusty_oraclejdk10
+          dist: trusty
+          jdk: oraclejdk10
+        - env: test=trusty_oraclejdk8
+          dist: trusty
+          jdk: oraclejdk8
+        - env: test=trusty_openjdk11
+          dist: trusty
+          jdk: openjdk11
 install: skip
 script:
-    - heroku --version
+    - which java
+    - java -version
 notifications:
   email: false
