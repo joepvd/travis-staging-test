@@ -6,15 +6,21 @@ matrix:
         - env: test=xenial_oraclejdk10
           dist: xenial
           jdk: oraclejdk10
+          script:
+          - which java
+          - java -version
         - env: test=xenial_openjdk11
           dist: xenial
           jdk: openjdk11
+          script:
+          - which java
+          - java -version
         - env: test=xenial_openjdk9
           dist: xenial
           jdk: openjdk8
+          script:
+          - which java
+          - java -version
 install: skip
-script:
-    - which java
-    - java -version
 notifications:
   email: false
