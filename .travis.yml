@@ -3,17 +3,14 @@ language: java
 jdk: oraclejdk11
 matrix:
     include:
-        - env: test=trusty_oraclejdk10
-          dist: trusty
+        - env: test=xenial_oraclejdk10
+          dist: xenial
           jdk: oraclejdk10
-        - env: test=trusty_oraclejdk8
-          dist: trusty
-          jdk: oraclejdk8
-        - env: test=trusty_openjdk11
-          dist: trusty
+        - env: test=xenial_openjdk11
+          dist: xenial
           jdk: openjdk11
-        - env: test=trusty_openjdk8
-          dist: trusty
+        - env: test=xenial_openjdk9
+          dist: xenial
           jdk: openjdk8
 install: skip
 script:
