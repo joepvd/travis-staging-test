@@ -37,7 +37,7 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -q 'openjdk version .1\.7.'
+              java -version |& grep -q 'java version .1\.7.'
         - env: test=trusty_openjdk11
           # openjdk not on image
           dist: trusty
@@ -64,7 +64,7 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -qE 'Java HotSpot.*build 8[.+]'
+              java -version |& grep -qE 'java version .1\.8\.'
         - env: test=precise_openjdk7
           # openjdk on image
           dist: precise
@@ -73,7 +73,7 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -q 'openjdk version .1\.7.'
+              java -version |& grep -q 'java version .1\.7.'
         - env: test=precise_openjdk11
           # openjdk NOT on image
           dist: precise
@@ -91,7 +91,7 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -qE 'Java HotSpot.*build 8[.+]'
+              java -version |& grep -qE 'java version .1\.8\.'
         - env: test=precise_oraclejdk11
           # oraclejdk not on image
           dist: precise
