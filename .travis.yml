@@ -28,7 +28,7 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -q 'openjdk version .8.'
+              java -version |& grep -q 'openjdk version .1\.8.'
         - env: test=trusty_openjdk7
           # openjdk on image
           dist: trusty
@@ -37,7 +37,7 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -q 'openjdk version .7.'
+              java -version |& grep -q 'openjdk version .1\.7.'
         - env: test=trusty_openjdk11
           # openjdk not on image
           dist: trusty
@@ -55,7 +55,7 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -qE 'Java HotSpot.*build 11\.'
+              java -version |& grep -qE 'Java HotSpot.*build 11[.+]'
         - env: test=trusty_oraclejdk8
           # oraclejdk on image
           dist: trusty
@@ -64,7 +64,43 @@ matrix:
           - which java
           - java -version
           - |
-              java -version |& grep -qE 'Java HotSpot.*build 8\.'
+              java -version |& grep -qE 'Java HotSpot.*build 8[.+]'
+        - env: test=precise_openjdk7
+          # openjdk on image
+          dist: precise
+          jdk: openjdk7
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'openjdk version .1\.7.'
+        - env: test=precise_openjdk11
+          # openjdk NOT on image
+          dist: precise
+          jdk: openjdk11
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'openjdk version .11.'
+        - env: test=precise_oraclejdk8
+          # oraclejdk on image
+          dist: precise
+          jdk: oraclejdk8
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -qE 'Java HotSpot.*build 8[.+]'
+        - env: test=precise_oraclejdk11
+          # oraclejdk not on image
+          dist: precise
+          jdk: oraclejdk11
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -qE 'Java HotSpot.*build 11[.+]'
 install: skip
 notifications:
   email: false
