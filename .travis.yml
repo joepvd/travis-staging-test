@@ -1,9 +1,63 @@
-language: bash
-os:
-    - linux
-    - osx
-    - windows
+sudo: prettyplease
+language: java
+jdk: oraclejdk11
+matrix:
+    include:
+        - env: test=xenial_oraclejdk10
+          # Oracle not on image
+          dist: xenial
+          jdk: oraclejdk10
+          script:
+          - which java
+          - java -version
+          - "java -version |& grep -qE 'Java HotSpot.*build 10\.'"
+        - env: test=xenial_openjdk11
+          # Openjdk on image
+          dist: xenial
+          jdk: openjdk11
+          script:
+          - which java
+          - java -version
+          - "java -version |& grep -q 'openjdk version .11.'"
+        - env: test=xenial_openjdk8
+          dist: xenial
+          jdk: openjdk8
+          script:
+          - which java
+          - java -version
+          - "java -version |& grep -q 'openjdk version .8.'"
+        - env: test=trusty_openjdk7
+          # openjdk on image
+          dist: trusty
+          jdk: openjdk7
+          script:
+          - which java
+          - java -version
+          - "java -version |& grep -q 'openjdk version .7.'"
+        - env: test=trusty_openjdk11
+          # openjdk not on image
+          dist: trusty
+          jdk: openjdk11
+          script:
+          - which java
+          - java -version
+          - "java -version |& grep -q 'openjdk version .11.'"
+        - env: test=trusty_oraclejdk11
+          # oraclejdk not on image
+          dist: trusty
+          jdk: oraclejdk11
+          script:
+          - which java
+          - java -version
+          - "java -version |& grep -qE 'Java HotSpot.*build 11\.'"
+        - env: test=trusty_oraclejdk8
+          # oraclejdk on image
+          dist: trusty
+          jdk: oraclejdk8
+          script:
+          - which java
+          - java -version
+          - "java -version |& grep -qE 'Java HotSpot.*build 8\.'"
 install: skip
-script: skip
 notifications:
   email: false
