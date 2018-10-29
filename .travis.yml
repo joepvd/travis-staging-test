@@ -1,25 +1,44 @@
-language: java
-os: osx
-matrix:
+language: php
+install: php --version
+script: php --version grep -q '7\.2'
+jobs:
   include:
-    - env: run=jdk10_new
+    - env: where=precise
+      dist: precise
+    - env: where=trusty
+      dist: trusty
+    - env: where=xenial
+      dist: xenial
+      group: edge
+    - env: where=xcode10
+      os: osx
       osx_image: xcode10
-      jdk: oraclejdk10
-    - env: run=jdk10_old
+    - env: where=xcode9.4
+      os: osx
       osx_image: xcode9.4
-      jdk: oraclejdk10
-    - env: run=jdk8
+    - env: where=xcode9.3
+      os: osx
       osx_image: xcode9.3
-      jdk: oraclejdk8
-    - env: run=jdk8_old
+    - env: where=xcode9.2
+      os: osx
+      osx_image: xcode9.2
+    - env: where=xcode9.1
+      os: osx
+      osx_image: xcode9.1
+    - env: where=xcode9
+      os: osx
+      osx_image: xcode9
+    - env: where=xcode8.3
+      os: osx
+      osx_image: xcode8.3
+    - env: where=xcode8
+      os: osx
       osx_image: xcode8
-      jdk: oraclejdk8
-    - env: run=openjdk8
-      osx_image: xcode9.3
-      jdk: openjdk8
-install: skip
-script:
-  - which java
-  - java -version
+    - env: where=xcode7.3
+      os: osx
+      osx_image: xcode7.3
+    - env: where=xcode6.4
+      os: osx
+      osx_image: xcode6.4
 notifications:
   email: false
