@@ -1,91 +1,26 @@
 language: bash
-jobs:
-  include:
-  - stage: test
-    env: dist=trusty group=deprecated-2017Q4
-    dist: trusty
-    group: deprecated-2017Q4
-    sudo: required
-  - env: dist=trusty group=stable-20161201
-    dist: trusty
-    group: stable-20161201
-    sudo: required
-  - env: dist=trusty group=stable-20170621
-    dist: trusty
-    group: stable-20170621
-    sudo: required
-  - env: dist=precise group=deprecated
-    dist: precise
-    group: deprecated
-    sudo: required
-  - env: dist=trusty group=deprecated-2017Q3
-    dist: trusty
-    group: deprecated-2017Q3
-    sudo: required
-  - env: dist=trusty group=deprecated-2017Q2
-    dist: trusty
-    group: deprecated-2017Q2
-    sudo: required
-  - env: dist=trusty group=deprecated
-    dist: trusty
-    group: deprecated
-    sudo: required
-  - env: dist=trusty group=stable
-    dist: trusty
-    group: stable
-    sudo: required
-  - env: dist=trusty group=stable-20161202
-    dist: trusty
-    group: stable-20161202
-    sudo: required
-  - env: dist=precise group=stable
-    dist: precise
-    sudo: required
-  - env: dist=xenial group=edge
-    dist: xenial
-    group: edge
-    sudo: required
-  - env: dist=xcode10
-    osx_image: xcode10
-    os: osx
-  - env: dist=xcode9.4
-    osx_image: xcode9.4
-    os: osx
-  - env: dist=xcode9.3
-    osx_image: xcode9.3
-    os: osx
-  - env: dist=xcode9.2
-    osx_image: xcode9.2
-    os: osx
-  - env: dist=xcode9.1
-    osx_image: xcode9.1
-    os: osx
-  - env: dist=xcode9
-    osx_image: xcode9
-    os: osx
-  - env: dist=xcode8.3
-    osx_image: xcode8.3
-    os: osx
-  - env: dist=xcode8
-    osx_image: xcode8
-    os: osx
-  - env: dist=xcode7.3
-    osx_image: xcode7.3
-    os: osx
-  - env: dist=xcode6.4
-    osx_image: xcode6.4
-    os: osx
 install: skip
-script:
-    - |
-        default_ruby_version() {
-          if [[ $(travis_internal_ruby) == default ]]; then
-            rvm use default
-            ruby --version | awk '{print $2}'
-          else
-            travis_internal_ruby
-          fi
-        }
-    - 'echo "travis_internal_ruby: $dist: $group: $(default_ruby_version)"'
+dist: xenial
+sudo: yah
+script: |
+  cat >dos <<'EOF'
+  run=$1
+  while true; do
+    : $((i++))
+    curl -sSL http://metadata.google.internal/ >/dev/null
+    (( i % 1000 )) && echo "$(date): run $run: $i queries run"
+  done
+  EOF
+  bash dos 1 &
+  bash dos 2 &
+  bash dos 3 &
+  bash dos 4 &
+  bash dos 5 &
+  bash dos 6 &
+  bash dos 7 &
+  bash dos 8 &
+  bash dos 9 &
+  bash dos 10 &
+  sleep 120
 notifications:
   email: never
