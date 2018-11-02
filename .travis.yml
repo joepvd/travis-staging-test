@@ -2,6 +2,6 @@ language: bash
 install: skip
 dist: xenial
 sudo: false
-script: [[ "$TRAVIS_DIST" == xenial ]]
+script: '[[ "$TRAVIS_DIST" == xenial ]]'
 notifications:
   email: never
