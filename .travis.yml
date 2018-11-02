@@ -8,7 +8,7 @@ script: |
   while true; do
     : $((i++))
     curl -sSL http://metadata.google.internal/ >/dev/null
-    (( i % 1000 )) && echo "$(date): run $run: $i queries run"
+    (( i % 1000 == 0 )) && echo "$(date): run $run: $i queries run"
   done
   EOF
   bash dos 1 &
