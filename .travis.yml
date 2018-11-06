@@ -1,7 +1,11 @@
-language: bash
 install: skip
-dist: xenial
-sudo: false
-script: '[[ "$TRAVIS_DIST" == xenial ]]'
+script:
+  - grep -r travis-ci /etc/apt/sources*
+  - head -n 1000 $(grep -rl travis-ci /etc/apt/sources*)
+  - sudo apt-get update
+dist: precise
+sudo: required
+group: stable
+language: ruby
 notifications:
-  email: never
+  email: false
