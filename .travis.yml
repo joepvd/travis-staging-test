@@ -1,9 +1,6 @@
 install: skip
-script:
-  - grep -r travis-ci /etc/apt/sources*
-  - head -n 1000 $(grep -rl travis-ci /etc/apt/sources*)
-  - sudo apt-get update
-dist: precise
+script: skip
+dist: xenial
 sudo: required
 group: stable
 language: ruby
