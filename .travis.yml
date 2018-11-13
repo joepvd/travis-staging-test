@@ -1,8 +1,8 @@
 install: skip
-script: skip
-dist: xenial
+script: sudo apt-get update
+dist: trusty
 sudo: required
 group: stable
-language: ruby
+language: php
 notifications:
   email: false
