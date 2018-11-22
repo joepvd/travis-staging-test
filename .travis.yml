@@ -1,6 +1,19 @@
-dist: xenial
 language: bash
+os: linux-ppc64le
 install: skip
-script: skip
+jobs:
+  include:
+    - name: sudo
+      sudo: required
+      script:
+        - echo $HOSTTYPE
+        - echo $HOSTTYPE | grep -vq x86_64
+        - "! [[ -f /.dockerenv ]]"
+    - name: container
+      sudo: false
+      script:
+        - echo $HOSTTYPE
+        - echo $HOSTTYPE | grep -vq x86_64
+        - "[[ -f /.dockerenv ]]"
 notifications:
   email: false
