@@ -1,4 +1,9 @@
-language: bash
+jobs:
+  include:
+    - name: bash
+      language: bash
+    - name: shell
+      language: shell
 dist: trusty
 install: skip
 script: skip
