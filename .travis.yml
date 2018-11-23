@@ -1,9 +1,7 @@
 jobs:
   include:
-    - name: bash
-      language: bash
-    - name: shell
-      language: shell
+    - language: bash
+    - language: shell
 dist: trusty
 install: skip
 script: skip
