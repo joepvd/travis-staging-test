@@ -1,9 +1,105 @@
+sudo: prettyplease
+language: java
 jobs:
-  include:
-    - language: bash
-    - language: shell
-dist: trusty
+    include:
+        - name: xenial_oraclejdk10
+          # Oracle not on image
+          dist: xenial
+          jdk: oraclejdk10
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -qE 'Java HotSpot.*build 10\.'
+        - name: xenial_openjdk11
+          # Openjdk on image
+          dist: xenial
+          jdk: openjdk11
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'openjdk version .11.'
+        - name: xenial_openjdk8
+          dist: xenial
+          jdk: openjdk8
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'openjdk version .1\.8.'
+        - name: trusty_openjdk7
+          # openjdk on image
+          dist: trusty
+          jdk: openjdk7
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'java version .1\.7.'
+        - name: trusty_openjdk11
+          # openjdk not on image
+          dist: trusty
+          jdk: openjdk11
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'openjdk version .11.'
+        - name: trusty_oraclejdk11
+          # oraclejdk not on image
+          dist: trusty
+          jdk: oraclejdk11
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -qE 'Java HotSpot.*build 11[.+]'
+        - name: trusty_oraclejdk8
+          # oraclejdk on image
+          dist: trusty
+          jdk: oraclejdk8
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -qE 'java version .1\.8\.'
+        - name: precise_openjdk7
+          # openjdk on image
+          dist: precise
+          jdk: openjdk7
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'java version .1\.7.'
+        - name: precise_openjdk11
+          # openjdk NOT on image
+          dist: precise
+          jdk: openjdk11
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -q 'openjdk version .11.'
+        - name: precise_oraclejdk8
+          # oraclejdk on image
+          dist: precise
+          jdk: oraclejdk8
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -qE 'java version .1\.8\.'
+        - name: precise_oraclejdk11
+          # oraclejdk not on image
+          dist: precise
+          jdk: oraclejdk11
+          script:
+          - which java
+          - java -version
+          - |
+              java -version |& grep -qE 'Java HotSpot.*build 11[.+]'
 install: skip
-script: skip
 notifications:
   email: false
