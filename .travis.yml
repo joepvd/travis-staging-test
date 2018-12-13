@@ -8,6 +8,6 @@ jobs:
     - name: xenial
       dist: xenial
 install: skip
-script: sudo apt-get update
+script: cat /etc/hosts
 notifications:
   email: never
