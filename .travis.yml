@@ -1,12 +1,8 @@
 language: java
 jobs:
   include:
-    - name: precise
-      dist: precise
     - name: trusty
       dist: trusty
-    - name: xenial
-      dist: xenial
 install: skip
 script: cat /etc/hosts
 notifications:
