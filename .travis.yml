@@ -1,9 +1,11 @@
-language: java
-jobs:
-  include:
-    - name: trusty
-      dist: trusty
+language: swift
+osx_image: xcode6.4
+cache:
+  directories:
+    - ~/tmp
 install: skip
-script: cat /etc/hosts
+script:
+  - cat ~/.nvmrc
+  - cat ~/.gemrc
 notifications:
   email: never
