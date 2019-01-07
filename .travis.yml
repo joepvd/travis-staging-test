@@ -1,8 +1,6 @@
-language: swift
-osx_image: xcode6.4
-cache:
-  directories:
-    - ~/tmp
+dist: xenial
+group: dev
+language: __sardonyx__
 install: skip
 script:
   - cat ~/.nvmrc
