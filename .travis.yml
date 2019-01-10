@@ -1,9 +1,13 @@
-dist: xenial
-group: dev
-language: __sardonyx__
+language: java
+jobs:
+  include:
+    - name: precise
+      dist: precise
+    - name: trusty
+      dist: trusty
+    - name: xenial
+      dist: xenial
 install: skip
-script:
-  - cat ~/.nvmrc
-  - cat ~/.gemrc
+script: cat /etc/hosts
 notifications:
   email: never
