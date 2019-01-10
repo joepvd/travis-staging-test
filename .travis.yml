@@ -1,12 +1,13 @@
 language: java
+dist: xenial
 jobs:
   include:
-    - name: precise
-      dist: precise
-    - name: trusty
-      dist: trusty
-    - name: xenial
-      dist: xenial
+    - name: stable
+      group: stable
+    - name: edge
+      group: edge
+    - name: dev
+      group: dev
 install: skip
 script: cat /etc/hosts
 notifications:
