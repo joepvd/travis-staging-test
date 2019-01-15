@@ -1,14 +1,18 @@
-language: java
-dist: trusty
-jobs:
-  include:
-    - name: stable
-      group: stable
-    - name: edge
-      group: edge
-    - name: dev
-      group: dev
+language: python
+services:
+  - xvfb
+dist: xenial
 install: skip
-script: cat /etc/hosts
+addons:
+  apt:
+    packages:
+      - x11-apps
+script:
+  - google-chrome &
+  - xclock &
+  - sleep 3
+  - pstree -Ua
+  - ps aux | grep '[x]clock'
+  - ps aux | grep '[g]oogle-chrome'
 notifications:
   email: never
