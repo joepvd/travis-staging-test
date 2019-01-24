@@ -1,5 +1,13 @@
 language: python
 install: skip
+jobs:
+  include:
+    - name: precise
+      dist: precise
+    - name: trusty
+      dist: trusty
+    - name: xenial
+      dist: xenial
 addons:
   apt:
     packages:
