@@ -1,18 +1,12 @@
 language: python
-services:
-  - xvfb
-dist: xenial
 install: skip
 addons:
   apt:
     packages:
       - x11-apps
 script:
-  - google-chrome &
-  - xclock &
-  - sleep 3
-  - pstree -Ua
-  - ps aux | grep '[x]clock'
-  - ps aux | grep '[g]oogle-chrome'
+  - sudo apt-get update
+  - sudo apt-get install tree
+  - cat /etc/apt/apt.conf.d/99-noredirect
 notifications:
   email: never
