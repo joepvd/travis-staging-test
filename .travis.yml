@@ -48,5 +48,7 @@ script:
   - sudo apt-get update
   - sudo apt-get install tree
   - cat /etc/apt/apt.conf.d/99-noredirect
+  - head /etc/apt/sources.list.d/*list
+  - cat /etc/apt/sources.list
 notifications:
   email: never
