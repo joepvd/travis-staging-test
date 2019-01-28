@@ -1,13 +1,7 @@
-language: python
+language: java
 install: skip
 jobs:
   include:
-  - env: dist=precise group=deprecated-2017Q1
-    dist: precise
-    group: deprecated-2017Q1
-  - env: dist=precise group=stable-20161201
-    dist: precise
-    group: stable-20161201
   - env: dist=trusty group=deprecated-2017Q4
     dist: trusty
     group: deprecated-2017Q4
@@ -17,9 +11,6 @@ jobs:
   - env: dist=trusty group=stable-20170621
     dist: trusty
     group: stable-20170621
-  - env: dist=precise group=deprecated
-    dist: precise
-    group: deprecated
   - env: dist=trusty group=deprecated-2017Q3
     dist: trusty
     group: deprecated-2017Q3
