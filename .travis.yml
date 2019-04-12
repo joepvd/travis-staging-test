@@ -2,7 +2,7 @@ dist: trusty
 language: sh
 install: skip
 script:
-  - sudo cat /etc/default/daemon.json
+  - sudo cat /etc/docker/daemon.json
   - docker pull alpine
 notifications:
   email: never
