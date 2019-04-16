@@ -1,8 +1,18 @@
-dist: trusty
-language: sh
+language: python
+jobs:
+  include:
+    - name: xenial-stable
+      dist: xenial
+    - name: xenial-deprecated
+      dist: xenial
+      group: deprecated
+    - name: trusty
+      dist: trusty
+    - name: precise
+      dist: precise
+addons:
+  mariadb: 10.1
 install: skip
-script:
-  - sudo cat /etc/docker/daemon.json
-  - docker pull alpine
+script: skip
 notifications:
   email: never
