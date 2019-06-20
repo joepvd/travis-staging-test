@@ -1,9 +1,6 @@
-dist: trusty
-language: sh
-install: skip
-script:
-  - sudo cat /etc/docker/daemon.json
-  - docker pull alpine
+language: ruby
+install: gem install travis
+script: travis logs --stream --staging $TRAVIS_JOB_ID
 notifications:
   email: never
 
