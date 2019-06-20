@@ -1,6 +1,6 @@
 language: ruby
 install: gem install travis
-script: travis logs --stream --staging $TRAVIS_JOB_ID
+script: "travis logs --stream --staging $TRAVIS_JOB_ID >/dev/null"
 notifications:
   email: never
 
