@@ -1,5 +1,6 @@
 language: ruby
 install: gem install travis
+before_script: "travis_wait 100 sleep 10000000 &"
 script: "travis logs --stream --staging $TRAVIS_JOB_NUMBER >/dev/null"
 notifications:
   email: never
